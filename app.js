@@ -76,10 +76,6 @@ main().then(() => {
     console.log(err);
 })
 
-app.get("/" , (req,res) => {
-    res.send("MAjor Project");
-})
-
 app.use((req,res,next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
@@ -87,17 +83,9 @@ app.use((req,res,next) => {
     next();
 })
 
-app.get("/demouser", async (req,res) => {
-    let user = new User({
-        email : "vansh123@gmail.com",
-        username : "abc"
-    });
-    let name = await User.register(user, "1234");
-    res.send(name);
+app.get("/" , (req,res) => {
+    res.redirect("/listing");
 });
-
-
-
 
 app.use("/listing", listingRouter);
 app.use("/listing/:id/reviews", reviewRouter);
