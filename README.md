@@ -115,25 +115,7 @@ nodemon app.js
 ```
 
 The application will run at:
-👉 **http://localhost:8080**
-
----
-
-## 📸 Screenshots
-
-> Add your screenshots inside a `screenshots/` folder and reference them below.
-
-| Home | Listing |
-|------|---------|
-| ![Home](screenshots/Home.png) | ![Listing](screenshots/Listing.png) |
-
-| Login | Create Listing |
-|-------|-----------------|
-| ![Login](screenshots/Login.png) | ![CreateListing](screenshots/CreateListing.png) |
-
-| Review |
-|--------|
-| ![Review](screenshots/Review.png) |
+👉 **https://wanderlust-2yk0.onrender.com**
 
 ---
 
