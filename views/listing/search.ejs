@@ -1,24 +1,19 @@
 <% layout("layouts/boilerplate.ejs") %>
-<%= success %>
 
-<div class="wl-search-wrap mb-4">
-    <form action="/listing/search" method="GET" class="wl-search-form">
-        <i class="bi bi-geo-alt wl-search-icon"></i>
-        <input
-            type="text"
-            name="location"
-            placeholder="Search by location..."
-            class="wl-search-input"
-            autocomplete="off"
-        >
-        <button type="submit" class="wl-search-btn">
-            <i class="bi bi-search"></i>
-            <span class="d-none d-sm-inline">Search</span>
-        </button>
-    </form>
-</div>
+<div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="wl-heading mb-0">Search Results for <%= location %></h2>
+        <a href="/listing" class="btn btn-sm btn-outline-secondary mb-4">
+            <i class="bi bi-arrow-left me-1"></i> Back to Listings
+        </a>
+    </div>
 
-
+    <% if(allListing.length === 0) { %>
+        <div class="text-center py-5 text-muted">
+            <i class="bi bi-house-slash" style="font-size:3.5rem;"></i>
+            <p class="mt-3">No listings found.</p>
+        </div>
+    <% } %>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4">
         <% for(let listing of allListing) { %>
@@ -51,10 +46,4 @@
         <% } %>
     </div>
 
-    <% if(allListing.length === 0) { %>
-        <div class="text-center py-5 text-muted">
-            <i class="bi bi-house-slash" style="font-size:3.5rem;"></i>
-            <p class="mt-3">No listings yet. <a href="/listing/new">Create one!</a></p>
-        </div>
-    <% } %>
 </div>

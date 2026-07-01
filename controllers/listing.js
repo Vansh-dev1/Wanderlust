@@ -58,3 +58,35 @@ module.exports.deleteListing = async (req,res) => {
     await Listing.findByIdAndDelete(id);
     res.redirect("/listing");
 }
+
+module.exports.searchListing = async(req, res) => {
+    const {location} = req.query;
+    if(!location){
+        req.flash("error", "Please enter location");
+        return res.redirect("/listing");
+    }
+
+    const listings = await Listing.find({
+    $or: [
+        {
+            location: {
+                $regex: location,
+                $options: "i"
+            }
+        },
+        {
+            title: {
+                $regex: location,
+                $options: "i"
+            }
+        },
+        {
+            country: {
+                $regex: location,
+                $options: "i"
+            }
+        }
+    ]
+});
+    res.render("listing/search.ejs", {allListing: listings, location});
+}

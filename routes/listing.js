@@ -17,8 +17,12 @@ router
     .get(wrapAsync(listingController.index))
     .post(upload.single("listing[image]"), validateListing, isLoggedIn, wrapAsync(listingController.createListing))
 
+
 //New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
+
+//Search Route
+router.get("/search", wrapAsync(listingController.searchListing));
 
 //Show Route
 //Update Route
@@ -31,5 +35,7 @@ router
 
 //Edit Route
 router.get("/:id/edit", validateListing, isLoggedIn, isOwner, wrapAsync(listingController.editListing));
+
+
 
 module.exports = router;
